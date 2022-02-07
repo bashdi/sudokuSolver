@@ -4,6 +4,7 @@ public class SudokuSolver {
 
     int[][] sudoku;
     final static int GRID_SIZE = 9;
+    int solveCalls = 0;
 
     public SudokuSolver(int[][] sudoku) {
         this.sudoku = sudoku;
@@ -13,11 +14,16 @@ public class SudokuSolver {
         return sudoku;
     }
 
+    public int getSolveCalls() {
+        return solveCalls;
+    }
+
     public boolean solve() {
         return solve(this.sudoku);
     }
 
     private boolean solve(int[][] sudoku) {
+        solveCalls++;
         for (int r = 0; r < GRID_SIZE; r++) {
             for (int c = 0; c < GRID_SIZE; c++) {
                 int number = sudoku[r][c];
